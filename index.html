@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Macbeth Learning App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1c1917; /* Dark stone */
+            color: #d6d3d1; /* Light parchment */
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 2rem;
+        }
+        .card {
+            background-color: #292524; /* Darker stone */
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        .button {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+        }
+        .correct {
+            background-color: #166534; /* Dark forest green */
+        }
+        .incorrect {
+            background-color: #991b1b; /* Deep maroon red */
+        }
+        /* Mobile styles */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-stone-950 text-stone-200">
+
+    <div class="container mx-auto px-4 py-8">
+        <header class="text-center mb-12">
+            <h1 class="text-4xl sm:text-5xl font-bold text-amber-400 mb-2">The Tragedy of Macbeth</h1>
+            <p class="text-xl sm:text-2xl text-stone-300">A Learning Journey for Students</p>
+        </header>
+
+        <main id="app-container" class="space-y-8">
+            <!-- Study Section -->
+            <section id="study-section" class="card">
+                <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6 text-amber-400">Study Zone</h2>
+                
+                <div class="text-lg space-y-4">
+                    <p class="text-center mb-6">Welcome to the world of Macbeth! Choose a topic to begin your study journey.</p>
+                </div>
+
+                <!-- Study Topic Buttons -->
+                <div id="study-options" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <button id="show-plot-button" class="px-6 py-4 bg-stone-700 text-stone-100 font-bold rounded-lg button text-lg">
+                        <svg class="h-8 w-8 mx-auto mb-2 text-amber-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M12.316 3.003c.31-.497.697-.84.99-.958.293-.118.618-.11.968.026.35.136.696.425.92.747.224.322.39.697.514 1.05.124.354.21.666.248.887.038.22.046.43.023.64l-1.07 4.197a1 1 0 01-.645.748l-2.455.614a1 1 0 01-1.085-1.29l.995-3.921c-.247-.132-.505-.236-.777-.323-.272-.087-.55-.138-.83-.153l-1.637.41a1 1 0 01-1.117-1.336l.78-3.085a.997.997 0 01.996-.714.996.996 0 01.996.714l.78 3.085a1 1 0 01-1.117 1.336l-1.637-.41c.28.015.558.066.83.153.272.087.53.191.777.323l-.995 3.921a1 1 0 011.085 1.29l2.455-.614a1 1 0 01.645-.748l1.07-4.197c.023-.21-.01-.42-.048-.64-.038-.22-.124-.532-.248-.887-.124-.353-.29-.728-.514-1.05-.224-.322-.57-.611-.92-.747-.35-.136-.618-.127-.968.026-.293.118-.68.461-.99.958-1.574 2.52-2.362 5.09-2.362 7.712.001 3.253 2.158 5.756 5.37 6.13a1 1 0 00.999-.861l.995-4.577a1 1 0 00-1.168-1.03l-1.464.366c-.47-.175-.94-.367-1.41-.538-1.32-.477-2.316-1.554-2.85-3.047a.999.999 0 011.39-1.39c.816.816 1.83 1.414 2.946 1.764l1.378-.344a1 1 0 001.168-1.03l-.995-4.577a1 1 0 00-.999-.861c-3.212.374-5.37 2.877-5.37 6.13a.999.999 0 01-.998.999.999.999 0 01-1-.999c0-2.895 1.05-5.632 2.76-7.85z" clip-rule="evenodd"></path>
+                        </svg>
+                        Plot Summary
+                    </button>
+                    <button id="show-characters-button" class="px-6 py-4 bg-stone-700 text-stone-100 font-bold rounded-lg button text-lg">
+                        <svg class="h-8 w-8 mx-auto mb-2 text-amber-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 9a3 3 0 100-6 3 3 0 000 6zM8 17s2-4 2-4s2 4 2 4zM16 14a1 1 0 01-1 1h-1a1 1 0 00-1 1v2h-1v-2a1 1 0 00-1-1H7a1 1 0 00-1 1v2H5v-2a1 1 0 00-1-1H3a1 1 0 01-1-1V5a1 1 0 011-1h14a1 1 0 011 1v9a1 1 0 01-1 1z" clip-rule="evenodd"></path>
+                        </svg>
+                        Main Characters
+                    </button>
+                    <button id="show-acts-button" class="px-6 py-4 bg-stone-700 text-stone-100 font-bold rounded-lg button text-lg">
+                        <svg class="h-8 w-8 mx-auto mb-2 text-amber-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2H4zm3 2a1 1 0 011-1h6a1 1 0 110 2H8a1 1 0 01-1-1zm2 3a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1zm1 4a1 1 0 00-1-1h6a1 1 0 100 2h-6a1 1 0 001-1z" clip-rule="evenodd"></path>
+                        </svg>
+                        Acts Summary
+                    </button>
+                </div>
+
+                <!-- Content Area -->
+                <div id="content-area" class="mt-8 hidden">
+                    <!-- Plot Summary Content -->
+                    <div id="plot-content" class="hidden text-lg space-y-4">
+                        <h3 class="text-xl font-bold mt-6 mb-2 text-stone-300">Plot Summary</h3>
+                        <p>Macbeth, a brave Scottish general, receives a prophecy from a trio of witches that he will one day be King of Scotland. Encouraged by his ambitious wife, Lady Macbeth, he murders King Duncan and takes the throne for himself. But his reign is filled with guilt and fear, and he must commit more and more murders to secure his power. The play ends with Macbeth's defeat and death, and Scotland is restored to its rightful king.</p>
+                        <button id="back-button" class="mt-4 px-4 py-2 bg-stone-600 text-white font-bold rounded-lg button">
+                            Go Back
+                        </button>
+                    </div>
+
+                    <!-- Main Characters Content -->
+                    <div id="characters-content" class="hidden text-lg space-y-4">
+                        <h3 class="text-xl font-bold mt-6 mb-2 text-stone-300">Main Characters</h3>
+                        <ul class="list-disc list-inside space-y-2">
+                            <li><strong>Macbeth:</strong> The protagonist, a Scottish general who becomes king after a prophecy.</li>
+                            <li><strong>Lady Macbeth:</strong> His wife, a cruel and ambitious woman who encourages him to kill King Duncan.</li>
+                            <li><strong>King Duncan:</strong> The good King of Scotland, murdered by Macbeth.</li>
+                            <li><strong>Banquo:</strong> A fellow general and friend of Macbeth, who is also given a prophecy by the witches.</li>
+                            <li><strong>The Three Witches:</strong> Mysterious figures who give Macbeth and Banquo their prophecies.</li>
+                            <li><strong>Macduff:</strong> A Scottish nobleman who is hostile to Macbeth's kingship from the start.</li>
+                        </ul>
+                        <button id="back-button-2" class="mt-4 px-4 py-2 bg-stone-600 text-white font-bold rounded-lg button">
+                            Go Back
+                        </button>
+                    </div>
+
+                    <!-- Acts Summary Content -->
+                    <div id="acts-content" class="hidden text-lg space-y-4">
+                        <h3 class="text-xl font-bold mt-6 mb-2 text-stone-300">Acts Summary</h3>
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="font-bold text-lg text-amber-400">Act I</h4>
+                                <p>Macbeth and Banquo, Scottish generals, return victorious from battle when they encounter three witches. The witches prophesy that Macbeth will be the Thane of Cawdor and then King of Scotland. After the first prophecy is confirmed, the ambition of Macbeth and his wife, Lady Macbeth, grows. They plan to murder King Duncan while he visits their castle.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg text-amber-400">Act II</h4>
+                                <p>Macbeth murders King Duncan in his sleep, incited by Lady Macbeth. Both try to hide the crime, but guilt and remorse torment them. The king's sons, Malcolm and Donalbain, flee for fear of being next, which causes others to suspect them of the crime. Macbeth is crowned King of Scotland.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg text-amber-400">Act III</h4>
+                                <p>Macbeth, obsessed with the prophecy that Banquo's descendants will be the future kings, hires murderers to kill Banquo and his son, Fleance. Banquo is killed, but Fleance escapes. At a banquet, Macbeth sees Banquo's ghost, causing him to lose his composure. The King has become cruel and paranoid.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg text-amber-400">Act IV</h4>
+                                <p>Macbeth visits the witches again. They give him new prophecies: he must beware of Macduff, that no one born of woman can harm him, and that he will be invincible until Birnam Wood moves to Dunsinane Hill. Believing himself invincible, Macbeth orders the massacre of Macduff's family at his castle. Macduff, who is in England, swears revenge.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg text-amber-400">Act V</h4>
+                                <p>Lady Macbeth, consumed by guilt, walks and talks in her sleep, trying to clean the bloodstains from her hands. As the forces of Malcolm and Macduff march towards Macbeth's castle, they use branches from Birnam Wood as camouflage, fulfilling the prophecy. Macduff confronts Macbeth and reveals that he was not born naturally, but was delivered by C-section, fulfilling the second prophecy. Macduff kills Macbeth, and Malcolm is crowned as the new King of Scotland, restoring peace to the kingdom.</p>
+                            </div>
+                        </div>
+                        <button id="back-button-3" class="mt-4 px-4 py-2 bg-stone-600 text-white font-bold rounded-lg button">
+                            Go Back
+                        </button>
+                    </div>
+                </div>
+
+                <button id="start-quiz-button" class="w-full mt-8 px-6 py-3 bg-red-900 text-white font-bold rounded-full button text-lg">
+                    Start the Quiz!
+                </button>
+            </section>
+
+            <!-- Quiz Section (hidden initially) -->
+            <section id="quiz-section" class="card hidden">
+                <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6 text-amber-400">Evaluation Zone</h2>
+                
+                <!-- Registration Form -->
+                <form id="registration-form" class="space-y-4 mb-8">
+                    <input type="text" id="student-name" placeholder="Your Name" required class="w-full p-3 rounded-lg bg-stone-800 text-stone-200 border-2 border-stone-600 focus:outline-none focus:border-amber-500">
+                    <input type="text" id="student-course" placeholder="Your Course" required class="w-full p-3 rounded-lg bg-stone-800 text-stone-200 border-2 border-stone-600 focus:outline-none focus:border-amber-500">
+                    <button type="submit" class="w-full p-3 bg-emerald-700 text-white font-bold rounded-lg button">
+                        Access Quiz
+                    </button>
+                </form>
+
+                <!-- Quiz Questions (hidden until access) -->
+                <div id="quiz-content" class="hidden">
+                    <form id="quiz-form" class="space-y-6">
+                        <!-- Questions will be generated here by JavaScript -->
+                    </form>
+                    <button id="submit-quiz-button" class="w-full mt-8 p-3 bg-red-900 text-white font-bold rounded-lg button">
+                        Submit
+                    </button>
+                </div>
+            </section>
+
+            <!-- Results Section (hidden initially) -->
+            <section id="results-section" class="card hidden text-center">
+                <h2 class="text-2xl sm:text-3xl font-bold mb-4 text-amber-400">Results</h2>
+                <p id="score-text" class="text-3xl font-bold text-emerald-500 mb-2"></p>
+                <p id="feedback-text" class="text-lg text-stone-300 mb-4"></p>
+                <!-- New element to show status messages -->
+                <div id="status-message" class="text-sm font-bold mt-4"></div>
+                <button onclick="window.location.reload();" class="mt-8 px-6 py-3 bg-stone-600 text-white font-bold rounded-full button">
+                    Start Again
+                </button>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        const quizQuestions = [
+            {
+                question: "Who is the main character in the play 'Macbeth'?",
+                options: ["King Duncan", "Banquo", "Macbeth", "Macduff"],
+                answer: "Macbeth"
+            },
+            {
+                question: "What is the prophecy given to Macbeth by the witches?",
+                options: ["He will be a great warrior.", "He will become King of Scotland.", "He will live a long life.", "He will become a famous poet."],
+                answer: "He will become King of Scotland."
+            },
+            {
+                question: "Who encourages Macbeth to kill King Duncan?",
+                options: ["Banquo", "Macduff", "The Three Witches", "Lady Macbeth"],
+                answer: "Lady Macbeth"
+            },
+            {
+                question: "Where does Macbeth murder King Duncan?",
+                options: ["In his castle at Inverness.", "In the forest.", "In the witches' cave.", "In the battlefield."],
+                answer: "In his castle at Inverness."
+            },
+            {
+                question: "What is the famous line Lady Macbeth says about washing her hands?",
+                options: ["'Out, dammed spot!'", "'All the perfumes of Arabia will not sweeten this little hand.'", "'Fair is foul, and foul is fair.'", "Both A and B"],
+                answer: "Both A and B"
+            },
+            {
+                question: "What does Macbeth see that isn't really there, after killing the King?",
+                options: ["A crown", "A ghost of Banquo", "A floating dagger", "A talking raven"],
+                answer: "A floating dagger"
+            },
+            {
+                question: "Who is the 'man not born of woman' that kills Macbeth?",
+                options: ["Banquo", "Macduff", "King Duncan's son", "Ross"],
+                answer: "Macduff"
+            },
+            {
+                question: "What is the setting of the play 'Macbeth'?",
+                options: ["England", "Ireland", "Scotland", "France"],
+                answer: "Scotland"
+            },
+            {
+                question: "What happens to Lady Macbeth in the end?",
+                options: ["She becomes queen.", "She goes mad and dies.", "She flees the country.", "She joins the witches."],
+                answer: "She goes mad and dies."
+            },
+            {
+                question: "What is the final outcome of the play?",
+                options: ["Macbeth remains king.", "Scotland falls into chaos.", "The witches take over.", "Malcolm becomes the rightful king."],
+                answer: "Malcolm becomes the rightful king."
+            }
+        ];
+
+        // UI elements
+        const studySection = document.getElementById('study-section');
+        const quizSection = document.getElementById('quiz-section');
+        const resultsSection = document.getElementById('results-section');
+        const studyOptions = document.getElementById('study-options');
+        const contentArea = document.getElementById('content-area');
+        const showPlotButton = document.getElementById('show-plot-button');
+        const showCharactersButton = document.getElementById('show-characters-button');
+        const showActsButton = document.getElementById('show-acts-button');
+        const plotContent = document.getElementById('plot-content');
+        const charactersContent = document.getElementById('characters-content');
+        const actsContent = document.getElementById('acts-content');
+        const startQuizButton = document.getElementById('start-quiz-button');
+        const registrationForm = document.getElementById('registration-form');
+        const quizContent = document.getElementById('quiz-content');
+        const quizForm = document.getElementById('quiz-form');
+        const submitQuizButton = document.getElementById('submit-quiz-button');
+        const scoreText = document.getElementById('score-text');
+        const feedbackText = document.getElementById('feedback-text');
+        const statusMessage = document.getElementById('status-message');
+
+        let studentName = '';
+        let studentCourse = '';
+
+        // Event listeners for study buttons
+        showPlotButton.addEventListener('click', () => {
+            studyOptions.classList.add('hidden');
+            contentArea.classList.remove('hidden');
+            plotContent.classList.remove('hidden');
+        });
+
+        showCharactersButton.addEventListener('click', () => {
+            studyOptions.classList.add('hidden');
+            contentArea.classList.remove('hidden');
+            charactersContent.classList.remove('hidden');
+        });
+
+        showActsButton.addEventListener('click', () => {
+            studyOptions.classList.add('hidden');
+            contentArea.classList.remove('hidden');
+            actsContent.classList.remove('hidden');
+        });
+
+        // Function to go back to study options
+        const backButtons = document.querySelectorAll('[id^="back-button"]');
+        backButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                contentArea.classList.add('hidden');
+                plotContent.classList.add('hidden');
+                charactersContent.classList.add('hidden');
+                actsContent.classList.add('hidden');
+                studyOptions.classList.remove('hidden');
+            });
+        });
+
+        // Event listeners for quiz buttons
+        startQuizButton.addEventListener('click', () => {
+            studySection.classList.add('hidden');
+            quizSection.classList.remove('hidden');
+        });
+
+        registrationForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            studentName = document.getElementById('student-name').value;
+            studentCourse = document.getElementById('student-course').value;
+            registrationForm.classList.add('hidden');
+            quizContent.classList.remove('hidden');
+            generateQuiz();
+        });
+
+        submitQuizButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            evaluateQuiz();
+        });
+
+        function generateQuiz() {
+            quizForm.innerHTML = '';
+            quizQuestions.forEach((q, index) => {
+                const questionContainer = document.createElement('div');
+                questionContainer.classList.add('bg-stone-800', 'p-4', 'rounded-lg', 'shadow-md');
+                
+                const questionTitle = document.createElement('h4');
+                questionTitle.classList.add('font-bold', 'text-xl', 'mb-3');
+                questionTitle.textContent = `Question ${index + 1}: ${q.question}`;
+                questionContainer.appendChild(questionTitle);
+
+                q.options.forEach((option, optionIndex) => {
+                    const optionLabel = document.createElement('label');
+                    optionLabel.classList.add('block', 'p-2', 'mb-2', 'rounded-lg', 'cursor-pointer', 'bg-stone-700', 'hover:bg-stone-600', 'transition-colors');
+                    
+                    const optionInput = document.createElement('input');
+                    optionInput.type = 'radio';
+                    optionInput.name = `question-${index}`;
+                    optionInput.value = option;
+                    optionInput.classList.add('mr-2', 'accent-amber-500');
+                    
+                    optionLabel.appendChild(optionInput);
+                    optionLabel.appendChild(document.createTextNode(option));
+                    questionContainer.appendChild(optionLabel);
+                });
+                
+                quizForm.appendChild(questionContainer);
+            });
+        }
+
+        async function evaluateQuiz() {
+            let score = 0;
+            const answers = {};
+
+            quizQuestions.forEach((q, index) => {
+                const selectedOption = document.querySelector(`input[name="question-${index}"]:checked`);
+                const answerContainer = selectedOption ? selectedOption.closest('label') : null;
+                
+                if (selectedOption) {
+                    if (selectedOption.value === q.answer) {
+                        score++;
+                        if (answerContainer) {
+                            answerContainer.classList.add('correct');
+                            answerContainer.classList.remove('bg-stone-700');
+                        }
+                    } else {
+                        if (answerContainer) {
+                            answerContainer.classList.add('incorrect');
+                            answerContainer.classList.remove('bg-stone-700');
+                        }
+                        const correctAnswerLabel = document.querySelector(`input[name="question-${index}"][value="${q.answer}"]`).closest('label');
+                        if (correctAnswerLabel) {
+                            correctAnswerLabel.classList.add('correct');
+                            correctAnswerLabel.classList.remove('bg-stone-700');
+                        }
+                    }
+                }
+            });
+
+            // Show results
+            quizSection.classList.add('hidden');
+            resultsSection.classList.remove('hidden');
+
+            const totalQuestions = quizQuestions.length;
+            const percentage = (score / totalQuestions) * 100;
+            scoreText.textContent = `Your Score: ${score} / ${totalQuestions}`;
+
+            let feedback = '';
+            if (percentage >= 90) {
+                feedback = "Outstanding work! You're a true Shakespearean expert. ";
+            } else if (percentage >= 70) {
+                feedback = "Great job! You have a solid understanding of the play. Keep up the good work! ";
+            } else if (percentage >= 50) {
+                feedback = "Good effort! Review the study section and try again to improve your score. ";
+            } else {
+                feedback = "You can do better! Take some time to study the plot and characters again. You've got this! ";
+            }
+            feedbackText.textContent = feedback;
+        
+            // Send data to Google Apps Script
+            statusMessage.textContent = 'Enviando resultados...'; // Nuevo mensaje de carga
+
+            const webAppUrl = "https://script.google.com/macros/s/AKfycbwm6d05mZ54hEGsJy9Z61Ef8cs0b0if0DuRjGrjBYk4Q_S1JoabKN9YMuLO_IggGEy3/exec"; 
+
+            const data = {
+                name: studentName,
+                course: studentCourse,
+                score: score,
+                total_questions: totalQuestions
+            };
+
+            try {
+                const response = await fetch(webAppUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+                const result = await response.json();
+                if (result.status === 'success') {
+                    statusMessage.textContent = '¡Resultados enviados exitosamente!';
+                    statusMessage.classList.add('text-emerald-500');
+                } else {
+                    statusMessage.textContent = 'Error al enviar resultados. Por favor, revisa los permisos de tu script.';
+                    statusMessage.classList.add('text-red-500');
+                }
+            } catch (error) {
+                statusMessage.textContent = 'Error al enviar resultados. Por favor, revisa tu URL y conexión de red.';
+                statusMessage.classList.add('text-red-500');
+                console.error("Error sending data to Google Sheets:", error);
+            }
+        }
+    </script>
+</body>
+</html>
